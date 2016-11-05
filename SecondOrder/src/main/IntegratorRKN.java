@@ -15,7 +15,7 @@ public class IntegratorRKN {
         this.d2y0 = d2y0;
     }
 
-    public int Step(double t1, double y1, double dy1,
+    public IntegratorRKN Step(double t1, double y1, double dy1,
                     double d2y1) {
         double h2 = h * h;
 
@@ -37,6 +37,6 @@ public class IntegratorRKN {
         dy0 = dy1;
         d2y0 = d2y1;
 
-        return 0;
+        return this;
     }
 }

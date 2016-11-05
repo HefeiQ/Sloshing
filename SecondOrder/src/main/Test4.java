@@ -19,17 +19,19 @@ public class Test4 {
     IntegratorRKN integratorRKN = new IntegratorRKN(acceleration, t0, y0, v0,
             h, a0);
 
-    System.out.println("Name entered :");
-    Console.WriteLine("TEST4, equation of motion");
-    Console.WriteLine(" t,s     y,m   v,m/s  a,m/s2");
-    Console.WriteLine("----------------------------");
-    Console.WriteLine("{0,4:F1}{1,8:F2}{2,8:F2}{3,8:F2}", t0, y0, v0, a0);
+    System.out.println("TEST4, equation of motion");
+    System.out.println(" t,s     y,m   v,m/s  a,m/s2");
+    System.out.println("----------------------------");
+    System.out.printf("%f %f %f %f",t0, y0, v0, a0);
 
-    double t, y, v, a;
-    while(t < tmax)
-    {
-        integratorRKN.Step(t, y, v, a);
-        Console.WriteLine("{0,4:F1}{1,8:F2}{2,8:F2}{3,8:F2}", t, y, v, a);
-    }
-    Console.WriteLine();
+    double t=t0, y=y0, v=v0, a=a0;
+    do {
+       integratorRKN.Step( t,  y,  v, a);
+       t = integratorRKN.t0;
+       y = integratorRKN.y0;
+       v = integratorRKN.dy0;
+       a = integratorRKN.d2y0;
+       System.out.println();
+       System.out.printf("%f %f %f %f", t, y, v, a);       
+    } while (t < tmax);
 }
